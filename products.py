@@ -15,6 +15,7 @@ class products:
         print("stock left:",end=" ")
         q=self.dict_1["stockleft"]
         print(q)
+        print("---------------------------------------------------")
     def vivo(self):
         self.dict_2 = {'name': 'vivo', 'price': 45000,'category':'mobiles','stockleft':90 }
         print("name:",end=" ")
@@ -28,6 +29,7 @@ class products:
         print(self.category)
         print("stock left:",end=" ")
         print(self.dict_2["stockleft"])
+        print("---------------------------------------------------")
     def puma(self):
         self.dict_3= {'name': 'puma', 'price': 4000,'category':'shoes','stockleft':190 }
         print("name:",end=" ")
@@ -41,6 +43,7 @@ class products:
         print(self.category)
         print("stock left:",end=" ")
         print(self.dict_3["stockleft"])
+        print("---------------------------------------------------")
     def hrx(self):
         self.dict_4= {'name': 'hrx', 'price': 5000,'category':'shoes','stockleft':100 }
         print("name:",end=" ")
@@ -54,6 +57,7 @@ class products:
         print(self.category)
         print("stock left:",end=" ")
         print(self.dict_4["stockleft"])
+        print("---------------------------------------------------")
     def boat(self):
         self.dict_5 = {'name': 'boat', 'price': 1500,'category':'airpods','stockleft':150 }
         print("name:",end=" ")
@@ -67,6 +71,7 @@ class products:
         print(self.category)
         print("stock left:",end=" ")
         print(self.dict_5["stockleft"])
+        print("---------------------------------------------------")
     def oneplus(self):
         self.dict_6 = {'name': 'oneplus', 'price': 5500,'category':'airpods','stockleft':150 }
         print("name:",end=" ")
@@ -80,6 +85,7 @@ class products:
         print(self.category)
         print("stock left:",end=" ")
         print(self.dict_6["stockleft"])
+        print("---------------------------------------------------")
     def gun(self):
         self.dict_7 = {'name': 'gun', 'price': 5500,'category':'toys','stockleft':210 }
         print("name:",end=" ")
@@ -93,6 +99,7 @@ class products:
         print(self.category)
         print("stock left:",end=" ")
         print(self.dict_7["stockleft"])
+        print("---------------------------------------------------")
     def teddy(self):
         self.dict_8 = {'name': 'teddybear', 'price': 9500,'category':'toys','stockleft':150 }
         print("name:",end=" ")
@@ -106,6 +113,7 @@ class products:
         print(self.category)
         print("stock left:",end=" ")
         print(self.dict_8["stockleft"])
+        print("---------------------------------------------------")
     def lists(self):
         self.list=[self.dict_1,self.dict_2,self.dict_3,self.dict_4,self.dict_5,self.dict_6,self.dict_7,self.dict_8]
         self.list1=[]
@@ -132,40 +140,63 @@ class products:
                         while True:
                           a=input("Enter an option:")
                           if a=="1":
-                            print("Your order has been placed.\n!!!THANK U FOR PURCHASING!!!")
-                            self.list1.append(self.buy)              
-                            more=input("If u want to buy one more product(YES/NO):")
-                            if(more=="YES"):
-                               products.buy(self)
-                            else:
-                               print("!!!THANK U FOR VISITING AMAZON!!!\nPlease visit again.")
+                            print("Your order has been placed.\n--->THANK U FOR PURCHASING<---")
+                            self.list1.append(self.buy)   
+                            d=True 
+                            while d:          
+                                more=input("If u want to buy or add to cart one more product(YES/NO):")
+                                if(more=="YES"):
+                                    d=False
+                                    products.buy(self)
+                                elif more=="NO":
+                                    d=False
+                                    print("--->THANK U FOR VISITING AMAZON<---\nPlease visit again.")
+                                else:
+                                    print("!!!Invalid enter.Please enter YES or NO.!!!")
                             break
                           elif a=="2":
                             print("Your product has added to cart.")
                             self.list2.append(self.buy)
-                            look=input("If u want to buy or add to cart one more product(YES/NO):")
-                            if(look=="YES"):
-                                products.buy(self)
-                            else:
-                                exit=input("Are u sure u want to exit(YES/NO):")
-                                if(exit=="YES"):
-                                    print("!!!THANK U FOR VISITING AMAZON!!!\nPlease visit again.")
-                                else:
+                            d=True 
+                            while d:  
+                                look=input("If u want to buy or add to cart one more product(YES/NO):")
+                                if(look=="YES"):
+                                    d=False
                                     products.buy(self)
+                                elif look=="NO":
+                                    d=False
+                                    j=True
+                                    while j:  
+                                        exit=input("Are u sure u want to exit(YES/NO):")
+                                        if(exit=="YES"):
+                                            j=False
+                                            print("--->THANK U FOR VISITING AMAZON<---\nPlease visit again.")
+                                            
+                                        elif exit=="NO":
+                                            j=False
+                                            products.buy(self)
+                                        else:
+                                            print("!!!Invalid enter.Please enter YES or NO.!!!")
+                                        
+                                else:
+                                    print("!!!Invalid enter.Please enter YES or NO.!!!")
                             break
                           else:
-                            print("Invalid option.Please enter a valid option.")
+                            print("!!!Invalid option.Please enter a valid option.!!!")
                     else:
-                        print("stock unavailable")
+                        print("!!!Stock Unavailable!!!")
                     k=False
                     break
             else:
                 print("Product not found.Please enter a valid name")
     def display(self):
         print("Displaying  list of products present in your Orders:")
-        print(self.list1)
+        for i in self.list1:
+            print(i)
         print("Displaying your list of products present in Add to Cart:")
-        print(self.list2)
+        for i in self.list2:
+            print(i)
+            
     
         
 import registration
